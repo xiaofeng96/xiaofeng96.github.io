@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-25T23:23:12+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">xiaofeng</title><subtitle>I put my notes in the study period, they are mainly about the deep learning research and implementation. Hope that I can progress together with you.</subtitle><author><name>xiaofeng Sun</name></author><entry><title type="html">Notes for “CMN for Recommendation Systems”</title><link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Notes for &quot;CMN for Recommendation Systems&quot;" /><published>2019-02-22T16:00:06+08:00</published><updated>2019-02-22T16:00:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;h3 id=&quot;1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures&quot;&gt;1. Deficiency of existing methods composed with deep learning arthitectures.&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-25T23:32:05+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zhenqi</title><subtitle>I put my notes in the study period, they are mainly about the deep learning research and implementation. Hope that I can progress together with you.</subtitle><author><name>Zhenqi Sun</name></author><entry><title type="html">Notes for “CMN for Recommendation Systems”</title><link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Notes for &quot;CMN for Recommendation Systems&quot;" /><published>2019-02-22T16:00:06+08:00</published><updated>2019-02-22T16:00:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;h3 id=&quot;1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures&quot;&gt;1. Deficiency of existing methods composed with deep learning arthitectures.&lt;/h3&gt;
 &lt;p&gt;Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-cmn-model&quot;&gt;2. CMN Model&lt;/h3&gt;
@@ -62,4 +62,132 @@
 
 &lt;ul&gt;
   &lt;li&gt;The output model receives the weighted neighborhood vector from the last hop $H^{th}$ to produce the final recommendation.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>xiaofeng Sun</name></author><summary type="html">1. Deficiency of existing methods composed with deep learning arthitectures. Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Zhenqi Sun</name></author><summary type="html">1. Deficiency of existing methods composed with deep learning arthitectures. Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.</summary></entry><entry><title type="html">Notes for “CMN for Recommendation Systems”</title><link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Notes for &quot;CMN for Recommendation Systems&quot;" /><published>2019-02-22T16:00:06+08:00</published><updated>2019-02-22T16:00:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;h3 id=&quot;1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures&quot;&gt;1. Deficiency of existing methods composed with deep learning arthitectures.&lt;/h3&gt;
+&lt;p&gt;Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-cmn-model&quot;&gt;2. CMN Model&lt;/h3&gt;
+&lt;h4 id=&quot;three-parts&quot;&gt;Three parts&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;internal user-specific memory&lt;/li&gt;
+  &lt;li&gt;internal item-specific memory&lt;/li&gt;
+  &lt;li&gt;collective neighborhood state&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;user-embedding&quot;&gt;&lt;strong&gt;&lt;em&gt;User Embedding&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;$m_u$&lt;/strong&gt; is target user embeding, &lt;strong&gt;$q_{uiv}$&lt;/strong&gt; is a scalar which size represents similarity between &lt;strong&gt;$u$&lt;/strong&gt; and &lt;strong&gt;$v$&lt;/strong&gt;, &lt;strong&gt;$i$&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q_{uiv}=m_u^Tm_v + e_i^Tm_v \ \ \forall v \in N(i)&lt;/script&gt;
+
+&lt;h4 id=&quot;neighborhood-attention&quot;&gt;&lt;strong&gt;&lt;em&gt;Neighborhood Attention&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Traditional neighborhood methods predefine a heuristic weighting function such as Pearson correlation or cosine similarity and &lt;strong&gt;require specifiying the number of users to consider&lt;/strong&gt;, &lt;strong&gt;Neighborhood Attention&lt;/strong&gt; needn’t doing this, just compute the attention weights for &lt;strong&gt;a given user&lt;/strong&gt; to infer the importance of &lt;strong&gt;each user’s&lt;/strong&gt; unique contribution to the &lt;strong&gt;neighborhood&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p_{uiv} = \frac{exp(q_{uiv})}{\sum_{k\in N(j)}q_{uik}} \ \ \forall v\in N(i)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Finially &lt;strong&gt;construct&lt;/strong&gt; the &lt;strong&gt;neighborhood attention&lt;/strong&gt; representation by interpolating the external neighborhood memory with the attention weights:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;o_{ui} = \sum_{v\in N(i)}p_{uiv}c_{v}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;($c_v$ is anthor embedding vector for user $v$; $C$ with the same dimensions as $M$; $o_{ui}$ represents &lt;strong&gt;a weighted sum&lt;/strong&gt; of neighborhood composed of relations between the specific user, item and the neighborhood.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;output-model&quot;&gt;&lt;strong&gt;&lt;em&gt;Output Model&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The output model smoothly &lt;strong&gt;integrates a nonlinear interaction&lt;/strong&gt; between &lt;strong&gt;the local collective neighborhood state&lt;/strong&gt; and &lt;strong&gt;the global user and item memories&lt;/strong&gt;, while existing method lack of the nonlinear interaction between the two items, &lt;strong&gt;limiting the extent of captured relations&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;For &lt;strong&gt;a given user $u$&lt;/strong&gt; and &lt;strong&gt;item $i$&lt;/strong&gt; the ranking score is given as:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{r}_{ui} = v^T\varnothing(\ U(m_u\odot e_i) + Wo_{ui} + b \ )&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(where $\odot$ is &lt;strong&gt;elementwise product&lt;/strong&gt;; $v,b\in \mathbb{R}^d$; and $U,W \in \mathbb{R}^{d*d}$ are &lt;strong&gt;parameters to be learned&lt;/strong&gt;; $\varnothing$ is a &lt;strong&gt;nonlinear activation function&lt;/strong&gt;, empirically the rectified unit(&lt;strong&gt;ReLU&lt;/strong&gt;) $\varnothing(x) =  max(0,x)$ to &lt;strong&gt;work best&lt;/strong&gt; due to its &lt;strong&gt;nonsaturating nature and suitability for sparse data&lt;/strong&gt;.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;multiple-hops&quot;&gt;Multiple Hops&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The hops help to look back and reconsider &lt;strong&gt;the most similar users&lt;/strong&gt; to infer &lt;strong&gt;more precise neighborhood&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The model apply a nonlinear prejection between hops:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z_{ui}^h = \varnothing(W^hz_{ui}^{h-1} + o_{ui}^h + b^h)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The initial query $z_{ui}^0 = m_u + e_i$.&lt;/li&gt;
+  &lt;li&gt;The user preference $z_{ui}^h$ is used to &lt;strong&gt;solicit the user neighborhood&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q_{uiv}^{h+1} = (z_{ui}^{h})^Tm_v \ \ \forall v \in N(i)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The output model receives the weighted neighborhood vector from the last hop $H^{th}$ to produce the final recommendation.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Zhenqi Sun</name></author><summary type="html">1. Deficiency of existing methods composed with deep learning arthitectures. Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.</summary></entry><entry><title type="html">Notes for “CMN for Recommendation Systems”</title><link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Notes for &quot;CMN for Recommendation Systems&quot;" /><published>2019-02-22T16:00:06+08:00</published><updated>2019-02-22T16:00:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;h3 id=&quot;1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures&quot;&gt;1. Deficiency of existing methods composed with deep learning arthitectures.&lt;/h3&gt;
+&lt;p&gt;Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-cmn-model&quot;&gt;2. CMN Model&lt;/h3&gt;
+&lt;h4 id=&quot;three-parts&quot;&gt;Three parts&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;internal user-specific memory&lt;/li&gt;
+  &lt;li&gt;internal item-specific memory&lt;/li&gt;
+  &lt;li&gt;collective neighborhood state&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;user-embedding&quot;&gt;&lt;strong&gt;&lt;em&gt;User Embedding&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;$m_u$&lt;/strong&gt; is target user embeding, &lt;strong&gt;$q_{uiv}$&lt;/strong&gt; is a scalar which size represents similarity between &lt;strong&gt;$u$&lt;/strong&gt; and &lt;strong&gt;$v$&lt;/strong&gt;, &lt;strong&gt;$i$&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q_{uiv}=m_u^Tm_v + e_i^Tm_v \ \ \forall v \in N(i)&lt;/script&gt;
+
+&lt;h4 id=&quot;neighborhood-attention&quot;&gt;&lt;strong&gt;&lt;em&gt;Neighborhood Attention&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Traditional neighborhood methods predefine a heuristic weighting function such as Pearson correlation or cosine similarity and &lt;strong&gt;require specifiying the number of users to consider&lt;/strong&gt;, &lt;strong&gt;Neighborhood Attention&lt;/strong&gt; needn’t doing this, just compute the attention weights for &lt;strong&gt;a given user&lt;/strong&gt; to infer the importance of &lt;strong&gt;each user’s&lt;/strong&gt; unique contribution to the &lt;strong&gt;neighborhood&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p_{uiv} = \frac{exp(q_{uiv})}{\sum_{k\in N(j)}q_{uik}} \ \ \forall v\in N(i)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Finially &lt;strong&gt;construct&lt;/strong&gt; the &lt;strong&gt;neighborhood attention&lt;/strong&gt; representation by interpolating the external neighborhood memory with the attention weights:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;o_{ui} = \sum_{v\in N(i)}p_{uiv}c_{v}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;($c_v$ is anthor embedding vector for user $v$; $C$ with the same dimensions as $M$; $o_{ui}$ represents &lt;strong&gt;a weighted sum&lt;/strong&gt; of neighborhood composed of relations between the specific user, item and the neighborhood.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;output-model&quot;&gt;&lt;strong&gt;&lt;em&gt;Output Model&lt;/em&gt;&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The output model smoothly &lt;strong&gt;integrates a nonlinear interaction&lt;/strong&gt; between &lt;strong&gt;the local collective neighborhood state&lt;/strong&gt; and &lt;strong&gt;the global user and item memories&lt;/strong&gt;, while existing method lack of the nonlinear interaction between the two items, &lt;strong&gt;limiting the extent of captured relations&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;For &lt;strong&gt;a given user $u$&lt;/strong&gt; and &lt;strong&gt;item $i$&lt;/strong&gt; the ranking score is given as:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{r}_{ui} = v^T\varnothing(\ U(m_u\odot e_i) + Wo_{ui} + b \ )&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(where $\odot$ is &lt;strong&gt;elementwise product&lt;/strong&gt;; $v,b\in \mathbb{R}^d$; and $U,W \in \mathbb{R}^{d*d}$ are &lt;strong&gt;parameters to be learned&lt;/strong&gt;; $\varnothing$ is a &lt;strong&gt;nonlinear activation function&lt;/strong&gt;, empirically the rectified unit(&lt;strong&gt;ReLU&lt;/strong&gt;) $\varnothing(x) =  max(0,x)$ to &lt;strong&gt;work best&lt;/strong&gt; due to its &lt;strong&gt;nonsaturating nature and suitability for sparse data&lt;/strong&gt;.)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;multiple-hops&quot;&gt;Multiple Hops&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;The hops help to look back and reconsider &lt;strong&gt;the most similar users&lt;/strong&gt; to infer &lt;strong&gt;more precise neighborhood&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The model apply a nonlinear prejection between hops:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z_{ui}^h = \varnothing(W^hz_{ui}^{h-1} + o_{ui}^h + b^h)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The initial query $z_{ui}^0 = m_u + e_i$.&lt;/li&gt;
+  &lt;li&gt;The user preference $z_{ui}^h$ is used to &lt;strong&gt;solicit the user neighborhood&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q_{uiv}^{h+1} = (z_{ui}^{h})^Tm_v \ \ \forall v \in N(i)&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The output model receives the weighted neighborhood vector from the last hop $H^{th}$ to produce the final recommendation.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Zhenqi Sun</name></author><summary type="html">1. Deficiency of existing methods composed with deep learning arthitectures. Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.</summary></entry></feed>
