@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Notes for &quot;CMN for Recommendation Systems&quot; - xiaofeng
+    
+  </title>
+
+  <meta name="description" content="1. Deficiency of existing methods composed with deep learning arthitectures. Ignoring a major class of CF(collaborative flitering) models, neighborhood or me...">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="/assets/vendor/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">
+  <link rel="alternate" type="application/rss+xml" title="xiaofeng" href="/feed.xml">
+
+</head>
+
+
+  <body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">xiaofeng</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+    <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/note/CMN.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Notes for "CMN for Recommendation Systems"</h1>
+            
+            <span class="meta">Posted by
+              <a href="#">xiaofeng Sun</a>
+              on February 22, 2019 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h3 id="1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures">1. Deficiency of existing methods composed with deep learning arthitectures.</h3>
+<p>Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.</p>
+
+<h3 id="2-cmn-model">2. CMN Model</h3>
+<h4 id="three-parts">Three parts</h4>
+<ol>
+  <li>internal user-specific memory</li>
+  <li>internal item-specific memory</li>
+  <li>collective neighborhood state</li>
+</ol>
+
+<h4 id="user-embedding"><strong><em>User Embedding</em></strong></h4>
+<ul>
+  <li><strong>$m_u$</strong> is target user embeding, <strong>$q_{uiv}$</strong> is a scalar which size represents similarity between <strong>$u$</strong> and <strong>$v$</strong>, <strong>$i$</strong>.</li>
+</ul>
+
+<script type="math/tex; mode=display">q_{uiv}=m_u^Tm_v + e_i^Tm_v \ \ \forall v \in N(i)</script>
+
+<h4 id="neighborhood-attention"><strong><em>Neighborhood Attention</em></strong></h4>
+<ul>
+  <li>Traditional neighborhood methods predefine a heuristic weighting function such as Pearson correlation or cosine similarity and <strong>require specifiying the number of users to consider</strong>, <strong>Neighborhood Attention</strong> needn’t doing this, just compute the attention weights for <strong>a given user</strong> to infer the importance of <strong>each user’s</strong> unique contribution to the <strong>neighborhood</strong>:</li>
+</ul>
+
+<script type="math/tex; mode=display">p_{uiv} = \frac{exp(q_{uiv})}{\sum_{k\in N(j)}q_{uik}} \ \ \forall v\in N(i)</script>
+
+<ul>
+  <li>Finially <strong>construct</strong> the <strong>neighborhood attention</strong> representation by interpolating the external neighborhood memory with the attention weights:</li>
+</ul>
+
+<script type="math/tex; mode=display">o_{ui} = \sum_{v\in N(i)}p_{uiv}c_{v}</script>
+
+<ul>
+  <li>($c_v$ is anthor embedding vector for user $v$; $C$ with the same dimensions as $M$; $o_{ui}$ represents <strong>a weighted sum</strong> of neighborhood composed of relations between the specific user, item and the neighborhood.)</li>
+</ul>
+
+<h4 id="output-model"><strong><em>Output Model</em></strong></h4>
+<ul>
+  <li>The output model smoothly <strong>integrates a nonlinear interaction</strong> between <strong>the local collective neighborhood state</strong> and <strong>the global user and item memories</strong>, while existing method lack of the nonlinear interaction between the two items, <strong>limiting the extent of captured relations</strong>.</li>
+  <li>For <strong>a given user $u$</strong> and <strong>item $i$</strong> the ranking score is given as:</li>
+</ul>
+
+<script type="math/tex; mode=display">\hat{r}_{ui} = v^T\varnothing(\ U(m_u\odot e_i) + Wo_{ui} + b \ )</script>
+
+<ul>
+  <li>(where $\odot$ is <strong>elementwise product</strong>; $v,b\in \mathbb{R}^d$; and $U,W \in \mathbb{R}^{d*d}$ are <strong>parameters to be learned</strong>; $\varnothing$ is a <strong>nonlinear activation function</strong>, empirically the rectified unit(<strong>ReLU</strong>) $\varnothing(x) =  max(0,x)$ to <strong>work best</strong> due to its <strong>nonsaturating nature and suitability for sparse data</strong>.)</li>
+</ul>
+
+<h4 id="multiple-hops">Multiple Hops</h4>
+<ul>
+  <li>The hops help to look back and reconsider <strong>the most similar users</strong> to infer <strong>more precise neighborhood</strong>.</li>
+  <li>The model apply a nonlinear prejection between hops:</li>
+</ul>
+
+<script type="math/tex; mode=display">z_{ui}^h = \varnothing(W^hz_{ui}^{h-1} + o_{ui}^h + b^h)</script>
+
+<ul>
+  <li>The initial query $z_{ui}^0 = m_u + e_i$.</li>
+  <li>The user preference $z_{ui}^h$ is used to <strong>solicit the user neighborhood</strong>.</li>
+</ul>
+
+<script type="math/tex; mode=display">q_{uiv}^{h+1} = (z_{ui}^{h})^Tm_v \ \ \forall v \in N(i)</script>
+
+<ul>
+  <li>The output model receives the weighted neighborhood vector from the last hop $H^{th}$ to produce the final recommendation.</li>
+</ul>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="https://www.twitter.com/SBootstrap">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          <li class="list-inline-item">
+            <a href="https://www.facebook.com/StartBootstrap">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="https://github.com/BlackrockDigital">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; xiaofeng Sun 2019</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+  </body>
+
+</html>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> 
+<!-- mathjax config similar to math.stackexchange --> 
+<script type="text/x-mathjax-config"> 
+MathJax.Hub.Config({ 
+    jax: ["input/TeX", "output/HTML-CSS"], 
+    tex2jax: { 
+        inlineMath: [ ['$', '$'] ], 
+        displayMath: [ ['$$', '$$']], 
+        processEscapes: true, 
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }, 
+    messageStyle: "none", 
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] } 
+}); 
+</script>
