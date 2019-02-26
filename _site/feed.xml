@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-26T20:27:54+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Gin&amp;amp;Sugary</title><subtitle>This is our secret base where we post our memories and love.</subtitle><author><name>Xiaofeng Cai</name></author><entry><title type="html">Tokyo Trip</title><link href="http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Tokyo Trip" /><published>2019-02-26T19:40:06+08:00</published><updated>2019-02-26T19:40:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll.html">&lt;h3 id=&quot;day-1&quot;&gt;Day 1&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-26T20:34:35+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Gin&amp;amp;Sugary</title><subtitle>This is our secret base where we post our memories and love.</subtitle><author><name>Xiaofeng Cai</name></author><entry><title type="html">Tokyo Trip</title><link href="http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Tokyo Trip" /><published>2019-02-26T19:40:06+08:00</published><updated>2019-02-26T19:40:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/26/welcome-to-jekyll.html">&lt;h3 id=&quot;day-1&quot;&gt;Day 1&lt;/h3&gt;
 &lt;h4 id=&quot;arrive&quot;&gt;Arrive&lt;/h4&gt;
 &lt;center&gt;
-&lt;img src=&quot;/img/IMG_4508.jpg&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
+&lt;img src=&quot;/img/IMG_4508.JPG&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
 &lt;/center&gt;
 
 &lt;h3 id=&quot;day-2&quot;&gt;Day 2&lt;/h3&gt;
 &lt;h4 id=&quot;disney-land&quot;&gt;Disney Land&lt;/h4&gt;
 &lt;center&gt;
-&lt;img src=&quot;/img/IMG_4625.jpg&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
+&lt;img src=&quot;/img/IMG_4625.JPG&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
 &lt;/center&gt;
 
 &lt;h3 id=&quot;day-3&quot;&gt;Day 3&lt;/h3&gt;
 &lt;h4 id=&quot;镰仓&quot;&gt;镰仓&lt;/h4&gt;
 &lt;center&gt;
-&lt;img src=&quot;/img/IMG_9162.jpg&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
+&lt;img src=&quot;/img/IMG_9162.JPG&quot; height=&quot;70%&quot; width=&quot;70%&quot; /&gt;
 &lt;/center&gt;
 
 &lt;h3 id=&quot;day-4&quot;&gt;Day 4&lt;/h3&gt;
@@ -23,7 +23,6 @@
 &lt;/center&gt;</content><author><name>Xiaofeng Cai</name></author><summary type="html">Day 1 Arrive</summary></entry><entry><title type="html">Notes for “CMN for Recommendation Systems”</title><link href="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Notes for &quot;CMN for Recommendation Systems&quot;" /><published>2019-02-22T16:00:06+08:00</published><updated>2019-02-22T16:00:06+08:00</updated><id>http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2019/02/22/welcome-to-jekyll.html">&lt;h3 id=&quot;1-deficiency-of-existing-methods-composed-with-deep-learning-arthitectures&quot;&gt;1. Deficiency of existing methods composed with deep learning arthitectures.&lt;/h3&gt;
 &lt;p&gt;Ignoring a major class of CF(collaborative flitering) models, neighborhood or memory-based approaches.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/IMG_9162.jpg&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
 &lt;h3 id=&quot;2-cmn-model&quot;&gt;2. CMN Model&lt;/h3&gt;
 &lt;h4 id=&quot;three-parts&quot;&gt;Three parts&lt;/h4&gt;
 &lt;ol&gt;
