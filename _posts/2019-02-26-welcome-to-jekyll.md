@@ -2,7 +2,7 @@
 layout: post
 title:  Tokyo Trip
 date:   2019-02-26 19:40:06 +0800
-background: '//img/IMG_9162.jpg'
+background: '/img/IMG_9162.jpg'
 categories: jekyll update
 ---
 ### Day 1
