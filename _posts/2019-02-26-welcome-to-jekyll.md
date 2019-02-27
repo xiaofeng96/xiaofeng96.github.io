@@ -26,5 +26,5 @@ categories: jekyll update
 ### Day 4
 #### 大涌谷
 <center>
-<img src="/img/IMG_9345.jpg" height="70%" width="70%">
+<img src="/img/IMG_9345.JPG" height="70%" width="70%">
 </center>
